@@ -17,7 +17,7 @@ Summary: The Linux kernel
 #
 # % define buildid .local
 
-%define distro_build 754.24.3
+%define distro_build 754.25.1
 %define kabi_build 754
 %define signmodules 1
 
@@ -155,7 +155,7 @@ Summary: The Linux kernel
 %endif
 
 # The kernel tarball/base version
-%define kversion 2.6.32-754.24.3.el6
+%define kversion 2.6.32-754.25.1.el6
 
 %define make_target bzImage
 
@@ -545,7 +545,7 @@ BuildConflicts: rhbuildsys(DiskFree) < 7Gb
 %define strip_cmd strip
 %endif
 
-Source0: linux-2.6.32-754.24.3.el6.tar.bz2
+Source0: linux-2.6.32-754.25.1.el6.tar.bz2
 
 Source1: Makefile.common
 
@@ -1744,10 +1744,14 @@ fi
 %endif
 
 %changelog
-* Tue Nov 12 2019 Denys Vlasenko <dvlasenk@redhat.com> [2.6.32-754.24.3.el6]
-- [drm] drm/i915/cmdparser: Fix jump whitelist clearing (Denys Vlasenko) [1756891] {CVE-2019-0155}
-
-* Thu Nov 07 2019 Denys Vlasenko <dvlasenk@redhat.com> [2.6.32-754.24.2.el6]
+* Wed Nov 20 2019 Denys Vlasenko <dvlasenk@redhat.com> [2.6.32-754.25.1.el6]
+- [kvm] KVM: VMX: Set VMENTER_L1D_FLUSH_NOT_REQUIRED if !X86_BUG_L1TF (Waiman Long) [1733760]
+- [virt] KVM: coalesced_mmio: add bounds checking (Bandan Das) [1746799] {CVE-2019-14821}
+- [virt] KVM: MMIO: Lock coalesced device when checking for available entry (Bandan Das) [1746799] {CVE-2019-14821}
+- [scsi] scsi: bnx2fc: Handle scope bits when array returns BUSY or TSF (Nilesh Javali) [1749512]
+- [scsi] scsi: bnx2fc: remove set but not used variables 'task', 'port', 'orig_task' (Nilesh Javali) [1749512]
+- [scsi] scsi: bnx2fc: remove set but not used variables 'lport', 'host' (Nilesh Javali) [1749512]
+- [security] KEYS: prevent creating a different user's keyrings (David Howells) [1537371]
 - [documentation] Documentation: Add ITLB_MULTIHIT documentation (Paolo Bonzini) [1692385] {CVE-2018-12207}
 - [kvm] KVM: introduce no_huge_pages module parameter (Paolo Bonzini) [1692385] {CVE-2018-12207}
 - [x86] x86: Add ITLB_MULTIHIT bug infrastructure (Paolo Bonzini) [1692385] {CVE-2018-12207}
@@ -1757,6 +1761,7 @@ fi
 - [x86] x86/speculation/taa: Add mitigation for TSX Async Abort (Waiman Long) [1766531] {CVE-2019-11135}
 - [x86] x86/cpu: Add a helper function x86_read_arch_cap_msr() (Waiman Long) [1766531] {CVE-2019-11135}
 - [x86] x86/msr: Add the IA32_TSX_CTRL MSR (Waiman Long) [1766531] {CVE-2019-11135}
+- [drm] drm/i915/cmdparser: Fix jump whitelist clearing (Denys Vlasenko) [1756891] {CVE-2019-0155}
 - [drm] drm/i915: Lower RM timeout to avoid DSI hard hangs (Dave Airlie) [1756824] {CVE-2019-0154}
 - [drm] drm/i915/gen8+: Add RC6 CTX corruption WA (Dave Airlie) [1756824] {CVE-2019-0154}
 - [drm] drm/i915/cmdparser: Ignore Length operands during command matching (Dave Airlie) [1756891] {CVE-2019-0155}
