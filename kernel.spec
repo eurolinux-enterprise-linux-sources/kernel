@@ -17,7 +17,7 @@ Summary: The Linux kernel
 #
 # % define buildid .local
 
-%define distro_build 754.24.2
+%define distro_build 754.24.3
 %define kabi_build 754
 %define signmodules 1
 
@@ -155,7 +155,7 @@ Summary: The Linux kernel
 %endif
 
 # The kernel tarball/base version
-%define kversion 2.6.32-754.24.2.el6
+%define kversion 2.6.32-754.24.3.el6
 
 %define make_target bzImage
 
@@ -545,7 +545,7 @@ BuildConflicts: rhbuildsys(DiskFree) < 7Gb
 %define strip_cmd strip
 %endif
 
-Source0: linux-2.6.32-754.24.2.el6.tar.bz2
+Source0: linux-2.6.32-754.24.3.el6.tar.bz2
 
 Source1: Makefile.common
 
@@ -1744,7 +1744,10 @@ fi
 %endif
 
 %changelog
-* Wed Nov 06 2019 Denys Vlasenko <dvlasenk@redhat.com> [2.6.32-754.24.2.el6]
+* Tue Nov 12 2019 Denys Vlasenko <dvlasenk@redhat.com> [2.6.32-754.24.3.el6]
+- [drm] drm/i915/cmdparser: Fix jump whitelist clearing (Denys Vlasenko) [1756891] {CVE-2019-0155}
+
+* Thu Nov 07 2019 Denys Vlasenko <dvlasenk@redhat.com> [2.6.32-754.24.2.el6]
 - [documentation] Documentation: Add ITLB_MULTIHIT documentation (Paolo Bonzini) [1692385] {CVE-2018-12207}
 - [kvm] KVM: introduce no_huge_pages module parameter (Paolo Bonzini) [1692385] {CVE-2018-12207}
 - [x86] x86: Add ITLB_MULTIHIT bug infrastructure (Paolo Bonzini) [1692385] {CVE-2018-12207}
