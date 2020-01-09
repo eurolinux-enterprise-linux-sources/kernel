@@ -17,7 +17,7 @@ Summary: The Linux kernel
 #
 # % define buildid .local
 
-%define distro_build 754.22.1
+%define distro_build 754.23.1
 %define kabi_build 754
 %define signmodules 1
 
@@ -155,7 +155,7 @@ Summary: The Linux kernel
 %endif
 
 # The kernel tarball/base version
-%define kversion 2.6.32-754.22.1.el6
+%define kversion 2.6.32-754.23.1.el6
 
 %define make_target bzImage
 
@@ -545,7 +545,7 @@ BuildConflicts: rhbuildsys(DiskFree) < 7Gb
 %define strip_cmd strip
 %endif
 
-Source0: linux-2.6.32-754.22.1.el6.tar.bz2
+Source0: linux-2.6.32-754.23.1.el6.tar.bz2
 
 Source1: Makefile.common
 
@@ -1005,6 +1005,9 @@ fi
 gpg --homedir . --export --keyring ./kernel.pub Red > extract.pub
 gcc -o scripts/bin2c scripts/bin2c.c
 scripts/bin2c ksign_def_public_key __initdata <extract.pub >crypto/signature/key.h
+# gpg 2.1+ creates private-keys-v1.d/ dir and pubring.kbx file, clean these up if they exist:
+test -f pubring.kbx && rm pubring.kbx
+test -d private-keys-v1.d && rm -rf private-keys-v1.d
 %endif
 
 cd ..
@@ -1741,6 +1744,12 @@ fi
 %endif
 
 %changelog
+* Tue Sep 17 2019 Denys Vlasenko <dvlasenk@redhat.com> [2.6.32-754.23.1.el6]
+- [vhost] vhost: make sure log_num < in_num (Eugenio Perez) [1750869 1750869] {CVE-2019-14835}
+
+* Fri Aug 16 2019 Denys Vlasenko <dvlasenk@redhat.com> [2.6.32-754.22.1.el6]
+- Rebuild
+
 * Fri Aug 16 2019 Denys Vlasenko <dvlasenk@redhat.com> [2.6.32-754.21.1.el6]
 - [scsi] scsi: megaraid_sas: return error when create DMA pool failed (Tomas Henzl) [1712858] {CVE-2019-11810}
 - [net] net: Set sk_prot_creator when copying sockets to the right proto (Andrea Claudi) [1657117] {CVE-2018-9568}
