@@ -17,7 +17,7 @@ Summary: The Linux kernel
 #
 # % define buildid .local
 
-%define distro_build 754.23.1
+%define distro_build 754.24.2
 %define kabi_build 754
 %define signmodules 1
 
@@ -155,7 +155,7 @@ Summary: The Linux kernel
 %endif
 
 # The kernel tarball/base version
-%define kversion 2.6.32-754.23.1.el6
+%define kversion 2.6.32-754.24.2.el6
 
 %define make_target bzImage
 
@@ -545,7 +545,7 @@ BuildConflicts: rhbuildsys(DiskFree) < 7Gb
 %define strip_cmd strip
 %endif
 
-Source0: linux-2.6.32-754.23.1.el6.tar.bz2
+Source0: linux-2.6.32-754.24.2.el6.tar.bz2
 
 Source1: Makefile.common
 
@@ -1744,6 +1744,41 @@ fi
 %endif
 
 %changelog
+* Wed Nov 06 2019 Denys Vlasenko <dvlasenk@redhat.com> [2.6.32-754.24.2.el6]
+- [documentation] Documentation: Add ITLB_MULTIHIT documentation (Paolo Bonzini) [1692385] {CVE-2018-12207}
+- [kvm] KVM: introduce no_huge_pages module parameter (Paolo Bonzini) [1692385] {CVE-2018-12207}
+- [x86] x86: Add ITLB_MULTIHIT bug infrastructure (Paolo Bonzini) [1692385] {CVE-2018-12207}
+- [x86] x86/spec_ctrl/taa: Enable TAA status change after late microcode (Waiman Long) [1766531] {CVE-2019-11135}
+- [documentation] x86/speculation/taa: Add documentation for TSX Async Abort (Waiman Long) [1766531] {CVE-2019-11135}
+- [base] x86/speculation/taa: Add sysfs reporting for TSX Async Abort (Waiman Long) [1766531] {CVE-2019-11135}
+- [x86] x86/speculation/taa: Add mitigation for TSX Async Abort (Waiman Long) [1766531] {CVE-2019-11135}
+- [x86] x86/cpu: Add a helper function x86_read_arch_cap_msr() (Waiman Long) [1766531] {CVE-2019-11135}
+- [x86] x86/msr: Add the IA32_TSX_CTRL MSR (Waiman Long) [1766531] {CVE-2019-11135}
+- [drm] drm/i915: Lower RM timeout to avoid DSI hard hangs (Dave Airlie) [1756824] {CVE-2019-0154}
+- [drm] drm/i915/gen8+: Add RC6 CTX corruption WA (Dave Airlie) [1756824] {CVE-2019-0154}
+- [drm] drm/i915/cmdparser: Ignore Length operands during command matching (Dave Airlie) [1756891] {CVE-2019-0155}
+- [drm] drm/i915/cmdparser: Add support for backward jumps (Dave Airlie) [1756891] {CVE-2019-0155}
+- [drm] drm/i915: Add gen9 BCS cmdparsing (Dave Airlie) [1756891] {CVE-2019-0155}
+- [drm] drm/i915: Allow parsing of unsized batches (Dave Airlie) [1756891] {CVE-2019-0155}
+- [drm] drm/i915: Support ro ppgtt mapped cmdparser shadow buffers (Dave Airlie) [1756891] {CVE-2019-0155}
+- [drm] drm/i915: Add support for mandatory cmdparsing (Dave Airlie) [1756891] {CVE-2019-0155}
+- [drm] drm/i915: Remove Master tables from cmdparser (Dave Airlie) [1756891] {CVE-2019-0155}
+- [drm] drm/i915: Disable Secure Batches for gen6+ (Dave Airlie) [1756891] {CVE-2019-0155}
+- [drm] drm/i915: Rename gen7 cmdparser tables (Dave Airlie) [1756891] {CVE-2019-0155}
+- [drm] drm/i915/gtt: Disable read-only support under GVT (Dave Airlie) [1756891] {CVE-2019-0155}
+- [drm] erm/i915/gtt: Read-only pages for insert_entries on bdw+ (Dave Airlie) [1756891] {CVE-2019-0155}
+- [drm] drm/i915/gtt: Add read only pages to gen8_pte_encode (Dave Airlie) [1756891] {CVE-2019-0155}
+
+* Fri Sep 27 2019 Denys Vlasenko <dvlasenk@redhat.com> [2.6.32-754.24.1.el6]
+- [net] ip: Don't leak head fragment on queue timeout (Stefano Brivio) [1752536]
+- [vhost] vhost_net: fix possible infinite loop (Eugenio Perez) [1702941]
+- [vhost] vhost: introduce vhost_exceeds_weight() (Eugenio Perez) [1702941]
+- [vhost] vhost_net: introduce vhost_exceeds_weight() (Eugenio Perez) [1702941]
+- [vhost] vhost_net: use packet weight for rx handler, too (Eugenio Perez) [1702941]
+- [vhost] vhost-net: set packet weight of tx polling to 2 * vq size (Eugenio Perez) [1702941]
+- [x86] x86/pti: Fix incorrect global bit setting with PTI on (Waiman Long) [1645724]
+- [x86] spec_ctrl: disable IBRS in idle, part 2 (Rafael Aquini) [1560787]
+
 * Tue Sep 17 2019 Denys Vlasenko <dvlasenk@redhat.com> [2.6.32-754.23.1.el6]
 - [vhost] vhost: make sure log_num < in_num (Eugenio Perez) [1750869 1750869] {CVE-2019-14835}
 
