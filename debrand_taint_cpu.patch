@@ -1,0 +1,22 @@
+--- a/arch/x86/kernel/setup.c
++++ b/arch/x86/kernel/setup.c
+@@ -846,7 +846,7 @@ static void rh_check_supported(void)
+ 	if (((boot_cpu_data.x86_max_cores * smp_num_siblings) == 1) &&
+ 	    !x86_hyper && !cpu_has_hypervisor && !is_kdump_kernel()) {
+ 		pr_crit("Detected single cpu native boot.\n");
+-		pr_crit("Important:  In Red Hat Enterprise Linux 7, single threaded, single CPU 64-bit physical systems are unsupported by Red Hat. Please contact your Red Hat support representative for a list of certified and supported systems.");
++		pr_crit("Important:  In SL7, single threaded, single CPU 64-bit physical systems are unsupported.");
+ 	}
+ 
+ 	/* The RHEL7 kernel does not support this hardware.  The kernel will
+--- a/kernel/rh_taint.c
++++ b/kernel/rh_taint.c
+@@ -8,7 +8,7 @@
+ void mark_hardware_unsupported(const char *msg)
+ {
+ 	/* Print one single message */
+-	pr_crit("Warning: %s - this hardware has not undergone testing by Red Hat and might not be certified. Please consult https://hardware.redhat.com for certified hardware.\n", msg);
++	pr_crit("Warning: %s - this hardware has not undergone upstream testing.\n", msg);
+ }
+ EXPORT_SYMBOL(mark_hardware_unsupported);
+ 

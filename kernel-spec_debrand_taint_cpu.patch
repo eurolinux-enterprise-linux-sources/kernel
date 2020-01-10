@@ -1,0 +1,11 @@
+--- kernel.spec.orig	2017-07-05 08:26:44.962097914 -0500
++++ kernel.spec	2017-07-05 08:27:51.533886235 -0500
+@@ -699,6 +699,8 @@ cp $RPM_SOURCE_DIR/kernel-%{version}-*.c
+ 
+ ApplyOptionalPatch linux-kernel-test.patch
+ 
++patch -p1 < %{SOURCE60000}
++
+ # Any further pre-build tree manipulations happen here.
+ 
+ chmod +x scripts/checkpatch.pl

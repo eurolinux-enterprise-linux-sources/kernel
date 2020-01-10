@@ -1,0 +1,16 @@
+--- a/x509.genkey
++++ b/x509.genkey
+@@ -5,9 +5,9 @@
+ x509_extensions = myexts
+ 
+ [ req_distinguished_name ]
+-O = Red Hat
+-CN = Red Hat Enterprise Linux kernel signing key
+-emailAddress = secalert@redhat.com
++O = Scientific Linux
++CN = Scientific Linux kernel signing key
++emailAddress = scientific-linux-devel@listserv.fnal.gov
+ 
+ [ myexts ]
+ basicConstraints=critical,CA:FALSE
+

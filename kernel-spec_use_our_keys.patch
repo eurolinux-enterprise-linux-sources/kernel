@@ -1,0 +1,37 @@
+--- kernel.spec.orig	2017-08-18 12:16:19.411358325 -0500
++++ kernel.spec	2017-08-18 12:17:21.056586057 -0500
+@@ -358,17 +358,6 @@ Source10: sign-modules
+ %define modsign_cmd %{SOURCE10}
+ Source11: x509.genkey
+ Source12: extra_certificates
+-%if %{?released_kernel}
+-Source13: securebootca.cer
+-Source14: secureboot.cer
+-%define pesign_name redhatsecureboot301
+-%else
+-Source13: redhatsecurebootca2.cer
+-Source14: redhatsecureboot003.cer
+-%define pesign_name redhatsecureboot003
+-%endif
+-Source15: rheldup3.x509
+-Source16: rhelkpatch1.x509
+ 
+ Source18: check-kabi
+ 
+@@ -833,6 +822,7 @@ BuildKernel() {
+     cp %{SOURCE12} .	# extra_certificates
+     cp %{SOURCE15} .	# rheldup3.x509
+     cp %{SOURCE16} .	# rhelkpatch1.x509
++    patch -p1 < %{SOURCE60001}
+ 
+     cp configs/$Config .config
+ 
+@@ -872,7 +862,7 @@ BuildKernel() {
+     fi
+ # EFI SecureBoot signing, x86_64-only
+ %ifarch x86_64
+-    %pesign -s -i $KernelImage -o $KernelImage.signed -a %{SOURCE13} -c %{SOURCE14} -n %{pesign_name}
++    %pesign -s -i $KernelImage -o $KernelImage.signed -a %{SOURCE13} -c %{SOURCE13}
+     mv $KernelImage.signed $KernelImage
+ %endif
+     $CopyKernel $KernelImage $RPM_BUILD_ROOT/%{image_install_path}/$InstallName-$KernelVer
